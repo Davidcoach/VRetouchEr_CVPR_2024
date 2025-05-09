@@ -1,0 +1,47 @@
+{
+    "seed": 2022,
+    "save_dir": "release_model/",
+    "eval_txt": "VRetouchEr.txt",
+    "train_data_loader": {
+        "dataroot": "datasets/retouching",
+        "size" : 512,
+        "percentage": 1
+    },
+    "losses": {
+        "valid_weight": 10000,
+        "mask_weight": 10,
+        "vgg_weight": 1,
+        "flow_weight": 1,
+        "lpips_weight": 10,
+        "id_weight": 1,
+        "adversarial_weight": 1,
+        "ssim_weight": 100,
+        "GAN_LOSS": "hinge"
+    },
+    "model": {
+        "net": "VRetouchEr",
+        "no_dis": 0,
+        "num_D": 2,
+        "n_layers_D": 5,
+        "n_layer_t": 5,
+        "frame_num": 6,
+        "channels": 512
+    },
+    "trainer": {
+        "use_wandb": 0,
+        "type": "Adam",
+        "beta1": 0.9,
+        "beta2": 0.99,
+        "lr": 2e-4,
+        "batch_size": 1,
+        "num_workers": 2,
+        "log_freq": 100,
+        "save_freq": 5e3,
+        "iterations": 10e5,
+        "scheduler": {
+            "type": "CosineAnnealingRestartLR",
+            "periods": [20, 10, 10, 10],
+            "restart_weights": [1, 0.5, 0.5, 0.5]
+        }
+    }
+}
