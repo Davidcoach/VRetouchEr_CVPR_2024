@@ -10,7 +10,7 @@ import torch.nn.functional as F
 from torchvision.utils import save_image
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-parser = argparse.ArgumentParser(description="STTN") #
+parser = argparse.ArgumentParser(description="VRetouchEr") #
 parser.add_argument("-e", "--epoch", type=str, default="")
 parser.add_argument("--size",  type=int, default=512)
 parser.add_argument("-c", "--ckpt", type=str, default= "release_model")
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         name = name[0]
         with torch.no_grad():
             list = [source_tensor_list[-1].to(device)]
-            for i in range(6):
+            for i in range(len(source_tensor_list)):
                 source_tensor_list[i] = source_tensor_list[i].to(device)
             pred_img, atten, _ = model(source_tensor_list)
             path = os.path.join(args.save_path, "show_1", f"{str(name)}.png")
