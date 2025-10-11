@@ -17,7 +17,18 @@ This is the official code of **CVPR 2024**: *VRetouchEr: Semi-supervised High-Qu
 
 - By estimating imperfection flow to correct the imperfection localization in each frame, the obtained spatial information becomes more stable and reliable, which is beneficial to stabilizing the retouching performance. 
 
-- By performing multi-frame masked attention computation, VRetouchEr is able to leverage the contextual information from different frames and synthesize more precise retouching results than the existing methods operating on a single frame. 
+- By performing multi-frame masked attention computation, VRetouchEr is able to leverage the contextual information from different frames and synthesize more precise retouching results than the existing methods operating on a single frame.
+
+
+## Pre-trained Weights
+
+We provide the trained checkpoint **`gen_best.pth`** via Baidu Netdisk:
+
+- **Link:** <https://pan.baidu.com/s/1xq9XAbTFI7huD2fGf7GR_Q>  
+- **Extraction code:** `reto`
+
+> After download, place `gen_best.pth` under `release_model/` and reference it in your config or command line.
+
 ------
 
 ## Setup Instructions
@@ -77,4 +88,5 @@ To test VRetouchEr:
 
    ```bash
    python video_retouching.py
+
    ```
